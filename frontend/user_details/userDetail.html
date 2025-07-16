@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="expenseTrackerApp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/userDetail.css" />
+        <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <title>User Detail</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+      angular.module("expenseTrackerApp", []);
+    </script>
+    <script src="userDetail.model.js"></script>
+    <script src="userDetail.controller.js"></script>
+  </head>
+  <body ng-controller="UserDetailController">
+    <div class="container">
+      <h1 class="userDetail">USER LIST</h1>
+      <ul class="list">
+        <li ng-repeat="user in users track by $index">
+          <span>{{ user.name }}</span>
+          <div class="buttons">
+            <button class="add-btn" ng-click="addExpenses(user)">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+            <button class="view-btn" ng-click="viewExpenses(user)">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+            <button class="update-btn" ng-click="updateUser(user)">
+              <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+            <button class="delete-btn" ng-click="deleteUser(user, $index)">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </li>
+      </ul>
+
+      <a href="../add_user/addUser.html">
+        <button class="addUser" ng-click="clearEditUser()">Add User</button>
+      </a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="expenseTrackerApp">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Login</title>
+<link rel="stylesheet" href="../assets/css/userLogin.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script>
+    angular.module("expenseTrackerApp", []);
+  </script>
+  <script src="userLogin.model.js"></script>
+  <script src="userLogin.controller.js"></script>
+</head>
+<body>
+<div class="container" ng-controller="UserLoginController">
+  <h2 class="userLogin">Please Login</h2>
+  <form ng-submit="login()">
+    <div class="form-control">
+      <label>Username</label>
+      <input type="text" ng-model="user.name" placeholder="Enter your username" required />
+    </div>
+    <div class="form-control">
+      <label>Password</label>
+      <input type="password" ng-model="user.password" placeholder="Enter your password" required />
+    </div>
+    <button type="submit" class="btn">Login</button>
+  </form>
+</div>
+</div>
+</body>
+</html>

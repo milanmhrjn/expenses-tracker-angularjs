@@ -1,0 +1,76 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.expensesTable{
+  padding: 20px;
+}
+
+table {
+  border: 1px solid black;     
+  border-collapse: collapse;    
+  width: 100%; 
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;                 
+}
+
+.desc-col {
+  width: 350px; 
+  min-width: 200px;
+  max-width: 500px;
+  word-break: break-word;
+}
+.expenses{
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.delete-btn{
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;  
+}
+
+.edit-btn{
+  background-color: #3fbc09;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;  
+  margin-right: 10px;
+
+} 
+
+.btn{
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  height: 100%;
+}
+
+#addExpenseBtn{
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;  
+  margin-left: 1120px;
+}
