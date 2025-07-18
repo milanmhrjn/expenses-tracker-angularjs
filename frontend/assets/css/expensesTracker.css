@@ -7,14 +7,14 @@
 body{
   font-family: Arial, sans-serif;
   background-color: white;
-  overflow: hidden;
+  /* overflow: hidden; */
   height: 100%;
 }
 
 
 .container{
   width: 500px;
-  margin:   auto;
+  margin:  auto;
   padding: 50px;
   background-color:#ececec; 
   border-radius: 8px;

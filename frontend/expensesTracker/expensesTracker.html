@@ -1,15 +1,86 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="expensesTracker">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Expense Tracker</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-  <script>
-    angular.module("expensesTracker", []);
-  </script>
-</head>
-<body>
-  <div ng-include="'expensesTracker.view.html'"></div>
-</body>
+<html lang="en" ng-app="expenseTrackerApp">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Expense Tracker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/expensesTracker.css" />
+    <script>
+      angular.module("expenseTrackerApp", []);
+    </script>
+    <script src="expensesTracker.controller.js"></script>
+    <script src="expensesTracker.model.js"></script>
+  </head>
+  <body>
+    <div class="container" ng-controller="ExpenseController">
+      <h1 id="page-heading">Welcome to Expenzo</h1>
+      <br />
+
+      <div id="user-info" class="user-info-box">
+        <div class="info-row">
+          <span class="label">Name:</span>
+          <span class="value" id="user-name">{{ user.name }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Email:</span>
+          <span class="value">{{ user.email }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Phone Number:</span>
+          <span class="value">{{ user.phone }}</span>
+        </div>
+      </div>
+
+      <div class="input-section">
+        <form name="expenseForm" ng-submit="submitExpense()" novalidate>
+          <label>Category</label>
+          <select
+            id="category"
+            ng-model="expense.category"
+            ng-change="handleCategoryChange()"
+            required>
+            <option value="Food and Beverage">Food and Beverage</option>
+            <option value="Rent">Rent</option>
+            <option value="Transportation">Transportation</option>
+            <option value="Others">Others</option>
+          </select>
+
+          <div id="miscField" ng-show="expense.category === 'Others'">
+            <label for="miscellaneous">Miscellaneous</label>
+            <input
+              id="miscellaneous"
+              type="text"
+              ng-model="expense.miscellaneous"
+              placeholder="Enter your category" />
+          </div>
+
+          <label for="description">Description</label>
+          <input
+            id="description"
+            type="text"
+            ng-model="expense.description"
+            placeholder="Enter Description"
+            required />
+
+          <label for="amount">Amount</label>
+          <input
+            id="amount"
+            type="number"
+            ng-model="expense.amount"
+            placeholder="Enter Amount"
+            required />
+
+          <label for="date">Date</label>
+          <input
+            type="datetime-local"
+            ng-model="expense.date"
+            id="date"
+            required />
+          <button id="addExpense" type="submit">
+            {{ isUpdateMode ? 'Update' : 'Add' }} Expense
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>

@@ -1,4 +1,5 @@
 select * from users;
+
 select * from expensesTracker;
 
 ALTER TABLE Users ADD password VARCHAR(255);

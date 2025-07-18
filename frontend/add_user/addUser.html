@@ -1,83 +1,86 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en" ng-app="expenseTrackerApp">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add User</title>
-  <link rel="stylesheet" href="../assets/css/addUser.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-<script src="addUser.controller.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add User</title>
+    <link rel="stylesheet" href="../assets/css/addUser.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+      angular.module("expenseTrackerApp", []);
+      </script>
+      <script src="addUser.controller.js"></script>
+      <script src="addUser.model.js"></script>
+  </head>
+  <body ng-controller="AddUserController">
+    <div class="container">
+      <h2 class="addUser">USER INFORMATION</h2>
+      <form ng-submit="submitForm()">
+        <div class="form-control">
+          <label for="fullName">Full Name</label>
+          <input
+            type="text"
+            ng-model="user.name"
+            placeholder="Enter your full name"
+            required />
+        </div>
 
-</head>
-  <body  ng-controller="AddUserController">
-  <div class="container">
-    <h2 class="addUser">USER INFORMATION</h2>
-    <form ng-submit="submitForm()">
-      <div class="form-control">
-        <label for="fullName">Full Name</label>
-        <input
-          type="text"
-          ng-model="user.name"
-          placeholder="Enter your full name"
-          required />
-      </div>
+        <div class="form-control">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            ng-model="user.email"
+            placeholder="Enter your email"
+            required />
+        </div>
 
-      <div class="form-control">
-        <label for="email">Email</label>
-        <input
-          type="email"
-          ng-model="user.email"
-          placeholder="Enter your email"
-          required />
-      </div>
+        <div class="form-control">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            ng-model="user.password"
+            placeholder="Enter password" 
+            required />
+        </div>
 
-      <div class="form-control">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          ng-model="user.password"
-          placeholder="Enter password"
-          required />
-      </div>
+        <div class="form-control">
+          <label for="phoneNumber">Phone Number</label>
+          <input
+            type="number"
+            ng-model="user.phone"
+            placeholder="Enter phone number"
+            required />
+        </div>
 
-      <div class="form-control">
-        <label for="phoneNumber">Phone Number</label>
-        <input
-          type="number"
-          ng-model="user.phone"
-          placeholder="Enter phone number"
-          required />
-      </div>
+        <div class="form-control">
+          <label for="age">Age</label>
+          <input
+            type="number"
+            ng-model="user.age"
+            placeholder="Enter your age"
+            required />
+        </div>
 
-      <div class="form-control">
-        <label for="age">Age</label>
-        <input
-          type="number"
-          ng-model="user.age"
-          placeholder="Enter your age"
-          required />
-      </div>
+        <div class="form-control">
+          <label for="gender">Gender</label>
+          <select ng-model="user.gender" id="gender" name="gender" required>
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
 
-      <div class="form-control">
-        <label for="gender">Gender</label>
-        <select ng-model="user.gender" required>
-          <option value="">Select</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
+        <div class="form-control">
+          <label for="address">Address</label>
+          <input
+            type="text"
+            ng-model="user.address"
+            placeholder="Enter your address" />
+        </div>
 
-      <div class="form-control">
-        <label for="address">Address</label>
-        <input
-          type="text"
-          ng-model="user.address"
-          placeholder="Enter your address" />
-      </div>
-
-      <button type="submit" class="btn">Submit</button>
-    </form>
-  </div>
-</body>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </div>
+  </body>
 </html>

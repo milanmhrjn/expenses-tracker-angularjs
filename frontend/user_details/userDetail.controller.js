@@ -1,6 +1,6 @@
-angular.module("expenseTrackerApp")
+angular
+  .module("expenseTrackerApp")
   .controller("UserDetailController", function ($scope, $window, UserService) {
-  
     $scope.users = [];
 
     UserService.getUsers()
@@ -12,13 +12,17 @@ angular.module("expenseTrackerApp")
       });
 
     $scope.addExpenses = function (user) {
-      localStorage.removeItem("editExpense");
-      localStorage.setItem("userId", user.id);
-      $window.location.href = `../expensesTracker/expensesTracker.html?userId=${user.id}&userName=${encodeURIComponent(user.name)}`;
+      // localStorage.removeItem("editExpense");
+      // localStorage.setItem("userId", user.id);
+      $window.location.href = `../expensesTracker/expensesTracker.html?userId=${
+        user.id
+      }&userName=${encodeURIComponent(user.name)}`;
     };
 
     $scope.viewExpenses = function (user) {
-      $window.location.href = `../user_expenses/userExpenses.html?userId=${user.id}&userName=${encodeURIComponent(user.name)}`;
+      $window.location.href = `../user_expenses/userExpenses.html?userId=${
+        user.id
+      }&userName=${encodeURIComponent(user.name)}`;
     };
 
     $scope.updateUser = function (user) {
@@ -28,7 +32,7 @@ angular.module("expenseTrackerApp")
     $scope.deleteUser = function (user, index) {
       UserService.deleteUser(user.id)
         .then(function () {
-          $scope.users.splice(index, 1); 
+          $scope.users.splice(index, 1);
         })
         .catch(function (err) {
           console.error("Delete failed:", err);

@@ -1,15 +1,68 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="userExpenses">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Expense Tracker</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-  <script>
-    angular.module("userExpenses", []);
-  </script>
-</head>
-<body>
-  <div ng-include="userExpenses.view.html"></div>
-</body>
+<html lang="en" ng-app="expenseTrackerApp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Expenses</title>
+    <link rel="stylesheet" href="/frontend/assets/css/userExpenses.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+      angular.module("expenseTrackerApp", []);
+    </script>
+    <script src="userExpenses.model.js"></script>
+    <script src="userExpenses.controller.js"></script>
+  </head>
+  <body ng-controller="UserExpensesController">
+    <div class="container">
+      <h1 class="expenses" id="userExpensesHeading">{{ heading }}</h1>
+
+      <div class="filter-dropdown">
+        <label for="statementSelect">Select Statement: </label>
+        <select
+          id="statementSelect"
+          ng-model="selectedDays"
+          ng-change="filterByDays()">
+          <option value="1">1 Day Statements</option>
+          <option value="7">7 Days Statements</option>
+          <option value="30">30 Days Statements</option>
+        </select>
+        <button id="addExpenseBtn" ng-click="addExpense()">Add Expenses</button>
+      </div>
+
+      <div class="expensesTable">
+        <table>
+          <thead>
+            <tr>
+              <th>S.No.</th>
+              <th>Category</th>
+              <th class="desc-col">Description</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="expense in filteredExpenses track by $index">
+              <td>{{ $index + 1 }}</td>
+              <td>{{ expense.Category || expense.category }}</td>
+              <td>{{ expense.Description || expense.description }}</td>
+              <td>{{ expense.Amount || expense.amount }}</td>
+              <td>{{ formatDate(expense.ExpenseDate) }}</td>
+              <td>
+                <button class="edit-btn" ng-click="editExpense(expense)">
+                  <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+                <button class="delete-btn" ng-click="deleteExpense(expense.id || expense.Id)">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
 </html>

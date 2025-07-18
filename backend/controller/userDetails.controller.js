@@ -1,6 +1,7 @@
 const db = require("../dbConfig");
 const bcrypt = require("bcrypt");
 
+
 exports.getAllUsers = async (req, res) => {
   try {
     const result = await db.query(
@@ -11,6 +12,7 @@ exports.getAllUsers = async (req, res) => {
     res.status(500).send(err.message);
   }
 };
+
 
 exports.createUsers = async (req, res) => {
   const { name, email, phone, age, gender, address, password, role } = req.body;
@@ -36,6 +38,7 @@ exports.createUsers = async (req, res) => {
   }
 };
 
+
 exports.getUserById = async (req, res) => {
   const { id } = req.params;
   try {
@@ -52,7 +55,9 @@ exports.getUserById = async (req, res) => {
   }
 };
 
+
 exports.updateUser = async (req, res) => {
+  const id = req.params.id;
   const { name, email, phone, age, gender, address, password } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -66,6 +71,7 @@ exports.updateUser = async (req, res) => {
   }
 };
 
+
 exports.deleteUser = async (req, res) => {
   const { id } = req.params;
   try {
@@ -75,6 +81,7 @@ exports.deleteUser = async (req, res) => {
     res.status(500).send(err.message);
   }
 };
+
 
 exports.loginUser = async (req, res) => {
   const { name, password } = req.body;
@@ -102,6 +109,7 @@ exports.loginUser = async (req, res) => {
     res.status(500).send("Internal server error");
   }
 };
+
 
 exports.updateUserRole = async (req, res) => {
   const id = req.params.id;
